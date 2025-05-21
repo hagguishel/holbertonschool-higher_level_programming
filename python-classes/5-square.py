@@ -37,7 +37,8 @@ class Square:
     def my_print(self):
         """Affiche une représentation du carré avec le caractère `#`.
 
-        Affiche dans la sortie standard un carré de `size` lignes sur `size` colonnes.
+        Affiche dans la sortie standard un carré
+        de `size` lignes sur `size` colonnes.
         Si la taille du carré est 0, affiche simplement une ligne vide.
 
         Exemple:

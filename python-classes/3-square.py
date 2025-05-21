@@ -10,7 +10,8 @@ class Square:
     """Classe représentant un carré.
 
     Attributs :
-        __size (int) : La taille du carré, privée et validée à l'initialisation.
+        __size (int) : La taille du carré,
+        privée et validée à l'initialisation.
     """
 
     def __init__(self, size=0):
