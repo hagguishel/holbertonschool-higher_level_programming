@@ -1,0 +1,117 @@
+#!/usr/bin/python3
+"""Module rectangle : définit une classe Rectangle avec aire et périmètre."""
+
+
+class Rectangle:
+    """Classe représentant un rectangle géométrique.
+
+    Attributs de classe :
+        number_of_instances (int):
+        Nombre d'instances actives de Rectangle.
+    """
+
+    number_of_instances = 0
+    print_symbol = "#"
+
+    def __init__(self, width=0, height=0):
+        """Initialise un rectangle avec une largeur et une hauteur."""
+
+        self.width = width
+        self.height = height
+        Rectangle.number_of_instances += 1
+
+    def area(self):
+        """Retourne l'aire du rectangle."""
+        if self.width == 0 or self.height == 0:
+            return 0
+        return self.width * self.height
+
+    def perimeter(self):
+        """Retourne le périmètre du rectangle,
+        ou 0 si width ou height vaut 0."""
+        if self.width == 0 or self.height == 0:
+            return 0
+        return 2 * (self.width + self.height)
+
+    def __str__(self):
+        """Retourne une représentation en chaîne du rectangle avec des #."""
+        if self.width == 0 or self.height == 0:
+            return ""
+        else:
+            lines = []
+            for i in range(self.height):
+                lines.append(str(self.print_symbol) * self.width)
+            return "\n".join(lines)
+
+    def __repr__(self):
+        """Retourne une représentation officielle
+        du rectangle, recréable avec eval()."""
+        return f"Rectangle({self.width}, {self.height})"
+
+    def __del__(self):
+        """Affiche un message et décrémente le
+        compteur à la suppression de l'instance."""
+        Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
+
+    @property
+    def width(self):
+        """Retourne la largeur du rectangle."""
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Définit la largeur du rectangle avec vérifications."""
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
+        self.__width = value
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """Retourne le plus grand rectangle selon l'aire.
+
+        Args:
+            rect_1 (Rectangle): Premier rectangle à comparer.
+            rect_2 (Rectangle): Deuxième rectangle à comparer.
+
+        Raises:
+            TypeError: Si rect_1 ou rect_2 n'est pas une instance de Rectangle.
+
+        Returns:
+            Rectangle: Le rectangle ayant la plus grande aire.
+            Si les deux ont la même aire, retourne rect_1.
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        else:
+            return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """Crée un nouveau rectangle carré de taille size.
+
+        Args:
+            size (int): Longueur des côtés du carré.
+
+        Returns:
+            Rectangle: Nouvelle instance avec width == height == size.
+        """
+        return cls(size, size)
