@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """
-Module that defines the lookup function
+Module for MyList class.
+Defines MyList, a subclass of list with a method
+to display its elements in ascending order.
 """
 
 
 class MyList(list):
-    """Classe qui hérite de la classe list.
-
-    Cette classe ajoute une méthode pour afficher la liste triée
-    sans modifier l'ordre original de la liste.
-    """
+    """List subclass with a print_sorted method."""
 
     def print_sorted(self):
-        """Affiche la liste triée en ordre croissant."""
+        """
+        Display the list elements in ascending order.
+        """
         print(sorted(self))
