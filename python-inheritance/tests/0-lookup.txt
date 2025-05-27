@@ -1,0 +1,18 @@
+>>> lookup = __import__('0-lookup').lookup
+
+>>> class Sample:
+...     def method(self):
+...         pass
+...     value = 42
+
+>>> 'method' in lookup(Sample)
+True
+
+>>> 'value' in lookup(Sample)
+True
+
+>>> '__init__' in lookup(Sample)
+True
+
+>>> type(lookup(Sample))
+<class 'list'>
