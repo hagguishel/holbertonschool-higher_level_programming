@@ -1,20 +1,18 @@
->>> MyList = __import__('1-my_list').MyList
+>>> import importlib.util, pathlib, sys
+>>> path = pathlib.Path("1-my_list.py")
+>>> spec = importlib.util.spec_from_file_location("mylist_mod", path)
+>>> mod = importlib.util.module_from_spec(spec)
+>>> sys.modules["mylist_mod"] = mod
+>>> spec.loader.exec_module(mod)
+>>> MyList = mod.MyList
+>>> ml = MyList([3, 1, 4, 2])
+>>> ml.print_sorted()
+[1, 2, 3, 4]
+>>> ml
+[3, 1, 4, 2]
 
->>> my_list = MyList()
->>> my_list.append(3)
->>> my_list.append(1)
->>> my_list.append(2)
->>> print(my_list)
-[3, 1, 2]
-
->>> my_list.print_sorted()
-[1, 2, 3]
-
->>> print(my_list)
-[3, 1, 2]
-
->>> isinstance(my_list, list)
-True
-
->>> type(my_list)
-<class '1-my_list.MyList'>
+>>> empty = MyList()
+>>> empty.print_sorted()
+[]
+>>> empty
+[]
