@@ -1,4 +1,8 @@
 #!/usr/bin/python3
-"""
-Module that defines the lookup function
-"""
+"""Définition d'une classe géométrique vide."""
+
+
+class BaseGeometry:
+    """Classe géométrique vide."""
+
+    pass
