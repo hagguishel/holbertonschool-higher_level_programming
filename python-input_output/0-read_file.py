@@ -1,21 +1,8 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
-"""
-Module 0-read_file
-
-Ce module contient une fonction qui lit un fichier texte (UTF-8)
-et affiche son contenu sur la sortie standard.
-"""
+"""0. Read file"""
 
 
 def read_file(filename=""):
-    """
-    Lit un fichier texte (UTF-8) et affiche son contenu dans le terminal.
-
-    Argument :
-        filename : nom du fichier à lire.
-    """
-    with open(filename, encoding="utf-8") as f:
-        text = f.read()
-
-    print(text)
+    """Reads a text file (UTF8) and prints it to stdout."""
+    with open(filename, "r") as f:
+        print(f.read(), end="")
