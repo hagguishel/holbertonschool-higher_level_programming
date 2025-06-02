@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-"""0. Read file"""
+#!/usr/bin/python3
+"""
+Module 0-read_file
+
+Ce module contient une fonction qui lit un fichier texte (UTF-8)
+et affiche son contenu sur la sortie standard.
+"""
 
 
 def read_file(filename=""):
