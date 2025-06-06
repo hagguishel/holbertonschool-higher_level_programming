@@ -1,42 +1,28 @@
 #!/usr/bin/python3
-"""My class module"""
+"""Create a class Student"""
 
 
 class Student:
-    """Defines a Student class with public attributes:
-    - first_name
-    - last_name
-    - age
-
-    Includes a method to_json() that returns a dictionary
-    representation of the instance.
-    """
+    """Student class"""
 
     def __init__(self, first_name, last_name, age):
+        """Public instance"""
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """
-        Returns a dictionary representation of the instance.
-
-        If attrs is a list of strings,
-        returns only the attributes named in the list.
-        Otherwise, returns all attributes.
-        """
-        if type(attrs) is list and all(type(elem) == str for elem in attrs):
-            pass
+        """Representation json of student class"""
+        if type(attrs) is list:
+            new_dict = {}
+            for key in self.__dict__:
+                for key2 in attrs:
+                    if key == key2:
+                        new_dict[key] = self.__dict__[key]
+            return new_dict
         else:
             return self.__dict__
 
-        filtered = {}
-        for attr in attrs:
-            if hasattr(self, attr):
-                filtered[attr] = getattr(self, attr)
-        return filtered
-
     def reload_from_json(self, json):
-        """Update instance attributes from a dictionary."""
-        for key, value in json.items():
-            setattr(self, key, value)
+        """function that replace all attr"""
+        self.__dict__.update(json)
