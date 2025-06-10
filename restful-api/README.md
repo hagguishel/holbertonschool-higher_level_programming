@@ -38,14 +38,53 @@ L'architecture REST (Representational State Transfer) repose sur un ensemble de 
 
 ### 0. Bases de HTTP/HTTPS
 
-* Différencier HTTP et HTTPS:
-* **Chiffrement** : HTTP transmet les données en clair, HTTPS les chiffre avec SSL/TLS.
-* **Ports** : HTTP utilise le **port 80**, HTTPS utilise le **port 443**.
-* **Certificats** : HTTPS repose sur des **certificats numériques** délivrés par une autorité de certification (CA), garantissant l'identité du serveur.
-* **Authentification** : HTTPS permet de s'assurer que l'on communique bien avec le bon serveur (évite les attaques de type "man-in-the-middle").
-* **Indicateurs visibles** : dans un navigateur, HTTPS affiche souvent un cadenas 🔒, tandis que HTTP peut être signalé comme "non sécurisé".
-* Comprendre la structure d'une requête et réponse HTTP
-* Identifier les méthodes (GET, POST...) et codes (200, 404, 500...)
+#### 🔐 Différencier HTTP et HTTPS
+
+- **Chiffrement** : HTTP transmet les données en clair, tandis que HTTPS les chiffre avec SSL/TLS.
+- **Ports** : HTTP utilise le **port 80**, HTTPS utilise le **port 443**.
+- **Certificats** : HTTPS repose sur des **certificats numériques** délivrés par une autorité de certification (CA), qui garantissent l’identité du serveur.
+- **Authentification** : HTTPS permet de s’assurer que l’on communique bien avec le bon serveur, ce qui protège contre les attaques de type *man-in-the-middle*.
+- **Indicateurs visibles** : dans un navigateur, HTTPS affiche souvent un cadenas 🔒, alors que HTTP peut être signalé comme "non sécurisé".
+
+---
+
+#### 📡 Comprendre la structure d’une requête et d’une réponse HTTP
+
+Une requête HTTP comporte :
+- Une **méthode** (GET, POST, etc.)
+- Un **chemin** (URL ou endpoint)
+- Des **en-têtes** (headers)
+- Parfois un **corps** (body) pour les données à envoyer
+
+Une réponse HTTP contient :
+- Un **code de statut** (ex. : `200 OK`, `404 Not Found`, `500 Internal Server Error`)
+- Des **en-têtes** (headers)
+- Un **corps** (body), souvent en HTML, JSON, etc.
+
+---
+
+#### 🔧 Méthodes HTTP courantes
+
+- `GET` : Récupérer des données (lecture)
+- `POST` : Envoyer des données (création)
+- `PUT` : Mettre à jour des données (remplacement)
+- `PATCH` : Mettre à jour partiellement des données
+- `DELETE` : Supprimer des données
+
+---
+
+#### 🧾 Codes HTTP fréquents
+
+- `200 OK` : Requête réussie
+- `201 Created` : Ressource créée
+- `400 Bad Request` : Erreur de syntaxe dans la requête
+- `401 Unauthorized` : Authentification requise
+- `403 Forbidden` : Accès refusé
+- `404 Not Found` : Ressource introuvable
+- `500 Internal Server Error` : Erreur côté serveur
+
+---
+
 
 ### 1. Consommer une API en ligne de commande (avec `curl`)
 
