@@ -38,12 +38,12 @@ L'architecture REST (Representational State Transfer) repose sur un ensemble de 
 
 ### 0. Bases de HTTP/HTTPS
 
-* Différencier HTTP et HTTPS
-**Chiffrement** : HTTP transmet les données en clair, HTTPS les chiffre avec SSL/TLS.
-**Ports** : HTTP utilise le **port 80**, HTTPS utilise le **port 443**.
-**Certificats** : HTTPS repose sur des **certificats numériques** délivrés par une autorité de certification (CA), garantissant l'identité du serveur.
-**Authentification** : HTTPS permet de s'assurer que l'on communique bien avec le bon serveur (évite les attaques de type "man-in-the-middle").
-**Indicateurs visibles** : dans un navigateur, HTTPS affiche souvent un cadenas 🔒, tandis que HTTP peut être signalé comme "non sécurisé".
+* Différencier HTTP et HTTPS:
+* **Chiffrement** : HTTP transmet les données en clair, HTTPS les chiffre avec SSL/TLS.
+* **Ports** : HTTP utilise le **port 80**, HTTPS utilise le **port 443**.
+* **Certificats** : HTTPS repose sur des **certificats numériques** délivrés par une autorité de certification (CA), garantissant l'identité du serveur.
+* **Authentification** : HTTPS permet de s'assurer que l'on communique bien avec le bon serveur (évite les attaques de type "man-in-the-middle").
+* **Indicateurs visibles** : dans un navigateur, HTTPS affiche souvent un cadenas 🔒, tandis que HTTP peut être signalé comme "non sécurisé".
 * Comprendre la structure d'une requête et réponse HTTP
 * Identifier les méthodes (GET, POST...) et codes (200, 404, 500...)
 
