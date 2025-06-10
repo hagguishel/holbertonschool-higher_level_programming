@@ -39,6 +39,9 @@ L'architecture REST (Representational State Transfer) repose sur un ensemble de 
 ### 0. Bases de HTTP/HTTPS
 
 * Différencier HTTP et HTTPS
+   HTTPS est comme HTTP, mais sécurisé grâce au chiffrement des données via SSL/TLS. Les deux utilisent des ports différents : le port 80 pour HTTP et le port 443 pour HTTPS.
+  En résumé : HTTPS = HTTP + sécurité (grâce au chiffrement SSL/TLS).
+  HTTP est utilisé pour des sites simples, tandis que HTTPS est destiné aux sites sécurisés .
 * Comprendre la structure d'une requête et réponse HTTP
 * Identifier les méthodes (GET, POST...) et codes (200, 404, 500...)
 
