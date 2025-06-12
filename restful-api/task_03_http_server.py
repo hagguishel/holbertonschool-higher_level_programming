@@ -1,9 +1,12 @@
 #!/usr/bin/python3
+"""ficher test"""
 import http.server
 import json
 
 
 class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
+    """class"""
+
     def do_GET(self):
         if self.path == "/":
             self.send_response(200)
