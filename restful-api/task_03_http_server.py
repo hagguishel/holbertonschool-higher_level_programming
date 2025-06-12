@@ -28,12 +28,10 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
 
         # /status endpoint: returns plain text OK
         elif self.path == "/status":
-            dic = {"status": "OK"}
             self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            json_dic = json.dumps(dic)
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(json_dic.encode())
+            self.wfile.write(b"OK")
 
         elif self.path == "/info":
             self.send_response(200)
