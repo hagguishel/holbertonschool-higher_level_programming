@@ -41,7 +41,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write("404 Not Found: endpoint does not exist".encode())
+            self.wfile.write("404 Not Found".encode())
 
 
 if __name__ == "__main__":
