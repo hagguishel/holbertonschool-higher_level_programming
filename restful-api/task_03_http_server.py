@@ -24,7 +24,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             json_string = json.dumps(data)
-            self.wfile.write(json_string.encode())
+            self.wfile.write(json_string.encode("utf-8"))
 
         # /status endpoint: returns plain text OK
         elif self.path == "/status":
@@ -35,7 +35,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
 
         elif self.path == "/info":
             self.send_response(200)
-            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             info = {
                 "version": "1.0",
@@ -48,7 +48,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Not Found: Endpoint not found")
+            self.wfile.write(b"Endpoint not found")
 
 
 if __name__ == "__main__":
