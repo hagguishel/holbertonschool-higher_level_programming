@@ -8,6 +8,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
     """class"""
 
     def do_GET(self):
+        """def test"""
         if self.path == "/":
             self.send_response(200)
             self.send_header("Content-Type", "text/plain")
