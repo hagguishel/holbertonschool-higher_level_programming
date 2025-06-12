@@ -1,48 +1,58 @@
-#!/usr/bin/python3
-# 👉 Indique au système d'exécuter ce script avec Python 3
 import requests
 import csv
 
-# 👉 URL de l'API à contacter : elle renvoie une liste de faux articles (posts) au format JSON
-url = "https://jsonplaceholder.typicode.com/posts"
 
-
-# 🔹 Fonction pour afficher les titres de tous les posts reçus depuis l'API
 def fetch_and_print_posts():
+    """
+    Récupère les posts depuis JSONPlaceholder et affiche leurs titres.
+    """
+    url = "https://jsonplaceholder.typicode.com/posts"
+    response = requests.get(url)
 
-    reponse = requests.get(url)
-    # 👉 Envoie une requête HTTP GET à l'URL et stocke la réponse dans la variable "reponse"
-    if reponse.status_code == 200:
-        print("Status code: 200")
-        post = reponse.json()
-        # 👉 Convertit la réponse JSON en objet Python (liste de dictionnaires)
-        for item in post:
-            print(item["title"])
+    # Affiche le code de réponse HTTP
+    print(f"Status Code: {response.status_code}")
 
+    if response.status_code == 200:
+        # Convertit la réponse JSON en liste de dictionnaires
+        posts = response.json()
+
+        # Affiche le titre de chaque post
+        for post in posts:
+            print(post["title"])
     else:
-        print("Erreur : la requête a échoué")
+        # En cas d'erreur, affiche un message
+        print("Erreur lors de la récupération des posts.")
 
 
-# 🔹 Fonction pour enregistrer les posts dans un fichier CSV
 def fetch_and_save_posts():
-    reponse = requests.get(url)
-    if reponse.status_code == 200:
-        print("Status code: 200")
-        data = reponse.json()
-        csv_data = []
-        for post in data:
-            dico_simplifier = {
-                "id": post["id"],
-                "title": post["title"],
-                "body": post["body"],
-            }
-            # 👉 On crée un dictionnaire avec seulement les clés "id", "title" et "body"
-            csv_data.append(dico_simplifier)
+    """
+    Récupère les posts depuis JSONPlaceholder et les enregistre dans un CSV.
+    """
+    url = "https://jsonplaceholder.typicode.com/posts"
+    response = requests.get(url)
 
-        with open("posts.csv", "w") as f:
-            writer = csv.DictWriter(f, fieldnames=["id", "title", "body"])
-            # 👉 Crée un "écrivain CSV" qui sait gérer des dictionnaires avec ces 3 clés
+    if response.status_code == 200:
+        # Convertit la réponse JSON en liste de dictionnaires
+        posts = response.json()
+
+        # Garde uniquement les champs 'id', 'title' et 'body'
+        simplified_posts = [
+            {"id": post["id"], "title": post["title"], "body": post["body"]}
+            for post in posts
+        ]
+
+        # Ouvre le fichier CSV en écriture
+        with open("posts.csv", mode="w", encoding="utf-8", newline="") as fichier:
+            champs = ["id", "title", "body"]
+
+            # Initialise le writer CSV avec les bons champs
+            writer = csv.DictWriter(fichier, fieldnames=champs)
+
+            # Écrit l'en-tête du fichier CSV
             writer.writeheader()
-            # 👉Écrit la première ligne (les noms de colonnes : id,title,body)
-            writer.writerows(csv_data)
-            # 👉 Écrit chaque dictionnaire de la liste comme une ligne du tableau
+
+            # Écrit toutes les lignes de posts
+            writer.writerows(simplified_posts)
+    else:
+        # En cas d'erreur, affiche un message
+        print("Erreur lors de la récupération des posts.")
