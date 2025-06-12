@@ -13,9 +13,9 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
 
         elif self.path == "/data":
             data = {"name": "John", "age": 30, "city": "New York"}
-
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
+            self.end_headers()
             json_string = json.dumps(data)
             self.wfile.write(json_string.encode())
 
@@ -35,7 +35,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
                 "version": "1.0",
                 "description": "A simple API built with http.server",
             }
-            self.wfile.write(json.dump(info).encode())
+            self.wfile.write(json.dumps(info).encode())
 
         else:
             self.send_response(404)
