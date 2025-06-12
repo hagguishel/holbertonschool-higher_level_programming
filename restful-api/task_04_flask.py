@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+"""exo 4"""
 from flask import Flask, jsonify, request
 
+# Dictionnaire pour stocker les utilisateurs (en mémoire)
 users = {}
 
 app = Flask(__name__)
@@ -13,17 +15,15 @@ def home():
 
 @app.route("/data")
 def data():
-    dic = {"name": "Alice", "age": 25}
-    return jsonify(dic)
+    return jsonify(list(users.keys()))
 
 
 @app.route("/status")
 def status():
-    dic = {"status": "OK"}
-    return jsonify(dic)
+    return "OK"
 
 
-@app.route("/user/<username>")
+@app.route("/users/<username>")
 def get_user(username):
     if username in users:
         return jsonify(users[username])
