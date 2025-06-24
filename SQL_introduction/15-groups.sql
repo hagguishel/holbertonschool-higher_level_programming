@@ -1,6 +1,6 @@
 -- 15 Number by
 SELECT score,
-	COUNT(score) AS Number
+	COUNT(score) AS number
 FROM second_table
 GROUP BY score
-ORDER BY Number DESC
+ORDER BY number DESC;
