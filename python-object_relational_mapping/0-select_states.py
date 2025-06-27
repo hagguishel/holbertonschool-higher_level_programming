@@ -1,26 +1,32 @@
 #!/usr/bin/python3
-"""exo 1"""
+"""
+Lists all states from the database hbtn_0e_0_usa.
+Usage: ./0-select_states.py <mysql username> <mysql password> <database name>
+"""
 import MySQLdb
 import sys
 
-"""
-Connecte à une base MySQL et affiche les lignes de la table 'states',
-triées par id croissant, sous la forme : <id>: <name>.
-"""
 if __name__ == "__main__":
+    # Récupération des arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
 
-    conn = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
+    # Connexion à la base de données
+    db = MySQLdb.connect(
+        host="localhost", port=3306, user=username, passwd=password, db=db_name
     )
 
-    cur = conn.cursor()
+    # Création du curseur
+    cur = db.cursor()
+
+    # Exécution de la requête SQL
     cur.execute("SELECT * FROM states ORDER BY id ASC")
-    rows = cur.fetchall()
+
+    # Récupération et affichage des résultats
     for row in cur.fetchall():
         print(row)
+
+    # Fermeture
     cur.close()
-    conn.close()
+    db.close()
