@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Start link class to table in database"""
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
