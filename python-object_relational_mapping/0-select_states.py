@@ -1,6 +1,11 @@
 #!/usr/bin/python3
+"""exo 1"""
 import MySQLdb
 
+"""
+Connecte à une base MySQL et affiche les lignes de la table 'states',
+triées par id croissant, sous la forme : <id>: <name>.
+"""
 if __name__ == "__main__":
 
     conn = MySQLdb.connect(
