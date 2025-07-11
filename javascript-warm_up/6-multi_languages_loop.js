@@ -4,6 +4,12 @@ const tableau = [
   'Python is cool',
   'JavaScript is amazing'
 ];
+
+let result = '';
 for (let i = 0; i < tableau.length; i++) {
-  console.log(tableau[i]);
+  result += tableau[i];
+  if (i < tableau.length - 1) {
+    result += '\n';
+  }
 }
+console.log(result);
