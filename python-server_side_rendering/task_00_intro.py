@@ -14,9 +14,11 @@ def generate_invitations(template, attendees):
         return
 
     for i, attendee in enumerate(attendees, start=1):
+
         for key in attendee:
             if attendee[key] is None:
                 attendee[key] = "N/A"
+
         filled_template = template.format_map(SafeDict(attendee))
 
         filename = f"output_{i}.txt"
